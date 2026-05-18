@@ -38,7 +38,7 @@ export default function Testimonials() {
   return (
     <section
       id="reviews"
-      className="relative section-y container-x"
+      className="relative chapter container-x"
       aria-labelledby="reviews-heading"
     >
       <div

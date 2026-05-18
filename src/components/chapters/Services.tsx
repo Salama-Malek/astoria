@@ -271,7 +271,7 @@ export default function Services() {
   const lang = useLang();
 
   return (
-    <section id="services" className="relative section-y" aria-labelledby="services-heading">
+    <section id="services" className="relative chapter" aria-labelledby="services-heading">
       {/* SVG filters for chromatic aberration */}
       <svg className="absolute h-0 w-0" aria-hidden="true">
         <defs>

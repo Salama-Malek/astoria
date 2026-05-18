@@ -141,10 +141,18 @@
     padding-bottom: var(--space-section);
   }
 
-  /* Tighter section for stacked content */
-  .section-y-sm {
-    padding-top: calc(var(--space-section) * 0.7);
-    padding-bottom: calc(var(--space-section) * 0.7);
+  /* Each chapter is a viewport-anchored "page" */
+  .chapter {
+    min-height: 100svh;
+    padding-top: var(--space-section);
+    padding-bottom: var(--space-section);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .chapter-tall {
+    min-height: 110svh;
   }
 }
 

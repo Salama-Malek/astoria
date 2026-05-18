@@ -91,7 +91,7 @@ export default function Contact() {
   return (
     <section ref={ref} id="contact" className="relative" aria-labelledby="contact-heading">
       {/* Main contact block */}
-      <div className="container-x section-y pb-0">
+      <div className="container-x chapter pb-0">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <ChapterLabel
             ru={t.contact.chapterLabel}

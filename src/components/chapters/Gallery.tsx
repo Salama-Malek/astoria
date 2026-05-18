@@ -133,7 +133,7 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="relative section-y container-x"
+      className="relative section-y container-x min-h-[100svh]"
       aria-labelledby="gallery-heading"
     >
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">

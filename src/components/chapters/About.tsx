@@ -19,7 +19,7 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className="relative section-y container-x"
+      className="relative chapter chapter-tall container-x"
       aria-labelledby="about-heading"
     >
       {/* Light beam top-left */}
