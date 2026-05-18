@@ -4,61 +4,67 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: {
-          DEFAULT: '#f7f3ea',
-          soft: '#efe8d7',
-          card: '#ffffff',
-        },
-        ink: {
-          DEFAULT: '#1a1814',
-          soft: '#4a463e',
-          mute: '#8a8479',
+        void: '#0a0a0c',
+        panel: '#111114',
+        elevated: '#16161a',
+        paper: {
+          DEFAULT: '#f5f0e3',
+          dim: 'rgba(245, 240, 227, 0.65)',
+          mute: 'rgba(245, 240, 227, 0.35)',
+          faint: 'rgba(245, 240, 227, 0.12)',
         },
         cmyk: {
           c: '#2db4d8',
           m: '#e6296b',
           y: '#f0b020',
-          k: '#1a1814',
+          k: '#0a0a0c',
         },
         gold: {
-          DEFAULT: '#c9a227',
-          bright: '#e6b938',
-          deep: '#8a6a1f',
+          DEFAULT: '#e6b938',
+          deep: '#c9a227',
         },
       },
       fontFamily: {
-        serif: ['Fraunces', 'serif'],
-        sans: ['Inter Tight', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        serif: ['"Fraunces"', 'serif'],
+        sans: ['"Inter Tight"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
+      letterSpacing: {
+        wider2: '0.22em',
+        wider3: '0.3em',
       },
       boxShadow: {
-        warm: '0 2px 8px rgba(101, 79, 30, 0.06), 0 1px 3px rgba(101, 79, 30, 0.04)',
-        'warm-md': '0 8px 24px rgba(101, 79, 30, 0.08), 0 4px 8px rgba(101, 79, 30, 0.05)',
-        'warm-lg': '0 24px 48px rgba(101, 79, 30, 0.12), 0 8px 16px rgba(101, 79, 30, 0.06)',
+        'glow-c': '0 0 24px rgba(45,180,216,0.45), 0 0 64px rgba(45,180,216,0.18)',
+        'glow-m': '0 0 24px rgba(230,41,107,0.45), 0 0 64px rgba(230,41,107,0.18)',
+        'glow-y': '0 0 24px rgba(240,176,32,0.45), 0 0 64px rgba(240,176,32,0.18)',
       },
-      animation: {
-        'fade-up': 'fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-        'reveal-up': 'revealUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-        'marquee': 'marquee 45s linear infinite',
-        'pulse-soft': 'pulseSoft 1.5s ease-in-out infinite',
+      transitionTimingFunction: {
+        expo: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        cine: 'cubic-bezier(0.83, 0, 0.17, 1)',
       },
       keyframes: {
-        fadeUp: {
-          from: { opacity: '0', transform: 'translateY(20px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
-        },
         revealUp: {
-          from: { opacity: '0', transform: 'translateY(110%)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
+          from: { transform: 'translateY(110%)' },
+          to: { transform: 'translateY(0)' },
         },
-        marquee: {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-50%)' },
+        flicker: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.85' },
         },
-        pulseSoft: {
-          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.5', transform: 'scale(1.3)' },
+        drift: {
+          '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+          '50%': { transform: 'translateY(-20px) translateX(8px)' },
         },
+        pulseGlow: {
+          '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.1)' },
+        },
+      },
+      animation: {
+        'reveal-up': 'revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'flicker': 'flicker 3s ease-in-out infinite',
+        'drift': 'drift 8s ease-in-out infinite',
+        'pulse-glow': 'pulseGlow 2.4s ease-in-out infinite',
       },
     },
   },

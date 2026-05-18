@@ -2,57 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+  --cmyk-c: #2db4d8;
+  --cmyk-m: #e6296b;
+  --cmyk-y: #f0b020;
+  --paper: #f5f0e3;
+  --void: #0a0a0c;
+}
+
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  html,
+  body {
+    @apply bg-void text-paper font-sans antialiased;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    @apply bg-bg text-ink font-sans antialiased overflow-x-hidden;
-    line-height: 1.6;
+    line-height: 1.55;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(240, 176, 32, 0.06), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(230, 41, 107, 0.05), transparent 60%),
+      #0a0a0c;
   }
 
-  /* paper grain overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 100;
-    opacity: 0.04;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  ::selection {
+    background: rgba(240, 176, 32, 0.35);
+    color: var(--paper);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(245, 240, 227, 0.08);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 240, 227, 0.15);
   }
 }
 
 @layer components {
-  /* gradient text helpers */
-  .text-gradient-mc {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #e6296b, #f0b020);
+  .mono-label {
+    @apply font-mono uppercase text-[11px] tracking-wider2 text-paper-mute;
   }
-  .text-gradient-cm {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #2db4d8, #e6296b);
+
+  .mono-label-c { color: var(--cmyk-c); }
+  .mono-label-m { color: var(--cmyk-m); }
+  .mono-label-y { color: var(--cmyk-y); }
+
+  .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 0.96;
   }
-  .text-gradient-ym {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #f0b020, #e6296b);
+
+  .display-italic {
+    font-style: italic;
+    font-weight: 400;
   }
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #e6b938, #c9a227, #8a6a1f);
+
+  .text-glow-c { text-shadow: 0 0 24px rgba(45, 180, 216, 0.55), 0 0 64px rgba(45, 180, 216, 0.25); }
+  .text-glow-m { text-shadow: 0 0 24px rgba(230, 41, 107, 0.55), 0 0 64px rgba(230, 41, 107, 0.25); }
+  .text-glow-y { text-shadow: 0 0 24px rgba(240, 176, 32, 0.55), 0 0 64px rgba(240, 176, 32, 0.25); }
+
+  .glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(245, 240, 227, 0.08);
+  }
+
+  .hairline {
+    border-color: rgba(245, 240, 227, 0.08);
+  }
+
+  .reveal-mask {
+    overflow: hidden;
+    display: inline-block;
+  }
+  .reveal-line {
+    display: inline-block;
+    will-change: transform;
   }
 }
 
 @layer utilities {
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 90;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+
+  .container-x {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(16px, 4vw, 64px);
+    padding-right: clamp(16px, 4vw, 64px);
+  }
+
+  .section-y {
+    padding-top: clamp(96px, 14vh, 240px);
+    padding-bottom: clamp(96px, 14vh, 240px);
   }
 }
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
