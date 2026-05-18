@@ -66,7 +66,7 @@ export default function HeroDevice() {
       <pointLight position={[-3.4, -0.2, 2.0]} intensity={0.9} color={glow} distance={8} />
       <pointLight position={[0, -1.0, 3.0]} intensity={0.5} color="#f0b020" distance={6} />
 
-      <Environment preset="city" environmentIntensity={0.15} />
+      <Environment preset="city" background={false} />
 
       <DeviceStage device={activeDevice} />
 

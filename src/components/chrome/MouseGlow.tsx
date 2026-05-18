@@ -29,12 +29,12 @@ export default function MouseGlow() {
       x += (tx - x) * 0.12;
       y += (ty - y) * 0.12;
 
-      const elapsed = (now - t0) / 12000;
-      const phase = (elapsed % 1) * 3;
-      const i = Math.floor(phase);
-      const f = phase - i;
-      const a = COLORS[i % 3];
-      const b = COLORS[(i + 1) % 3];
+      const elapsed = Math.max(0, (now - t0)) / 12000;
+      const phase = (elapsed - Math.floor(elapsed)) * COLORS.length;
+      const i = Math.floor(phase) % COLORS.length;
+      const f = phase - Math.floor(phase);
+      const a = COLORS[i] ?? '#f0b020';
+      const b = COLORS[(i + 1) % COLORS.length] ?? '#f0b020';
       const mix = mixHex(a, b, f);
 
       el.style.transform = `translate3d(${x - 320}px, ${y - 320}px, 0)`;
@@ -60,6 +60,7 @@ export default function MouseGlow() {
 }
 
 function mixHex(a: string, b: string, t: number): string {
+  if (!a || !b) return '#f0b020';
   const ah = parseInt(a.slice(1), 16);
   const bh = parseInt(b.slice(1), 16);
   const ar = (ah >> 16) & 0xff;
