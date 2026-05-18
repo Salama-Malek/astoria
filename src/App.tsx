@@ -8,6 +8,7 @@ import MouseGlow from '@/components/chrome/MouseGlow';
 import Hero from '@/components/chapters/Hero';
 import About from '@/components/chapters/About';
 import Services from '@/components/chapters/Services';
+import CraftShowcase from '@/components/chapters/CraftShowcase';
 
 export default function App() {
   useLenis();
@@ -37,9 +38,7 @@ export default function App() {
 
         <About />
         <Services />
-        <section id="craft" className="section-y container-x">
-          <p className="mono-label text-paper-mute">CHAPTER IV — placeholder</p>
-        </section>
+        <CraftShowcase />
         <section id="gallery" className="section-y container-x">
           <p className="mono-label text-paper-mute">CHAPTER V — placeholder</p>
         </section>
