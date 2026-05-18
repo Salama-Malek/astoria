@@ -11,6 +11,7 @@ import Services from '@/components/chapters/Services';
 import CraftShowcase from '@/components/chapters/CraftShowcase';
 import Gallery from '@/components/chapters/Gallery';
 import Testimonials from '@/components/chapters/Testimonials';
+import Contact from '@/components/chapters/Contact';
 
 export default function App() {
   useLenis();
@@ -43,9 +44,7 @@ export default function App() {
         <CraftShowcase />
         <Gallery />
         <Testimonials />
-        <section id="contact" className="section-y container-x">
-          <p className="mono-label text-paper-mute">CHAPTER VII — placeholder</p>
-        </section>
+        <Contact />
       </main>
 
       <Footer />
