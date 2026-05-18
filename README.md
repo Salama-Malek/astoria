@@ -1,94 +1,95 @@
-# Astoria — Landing Page
+# Astoria — Cinematic Print Shop Site
 
-A bilingual (RU/EN) landing page for **Astoria** photo & print shop. Light theme with bold CMYK accents and an interactive morphing 3D hero (printer → t-shirt press → laminator).
+A premium, bilingual (RU/EN), cinematic single-page site for **Astoria** — a Moscow photo and print shop operating since 2010.
+
+Pure black voids, CMYK glow accents, a 3D printer / T-shirt press / laminator that morphs in the hero, GSAP-pinned paper-through-stages craft showcase, lightbox gallery built from real shop photography.
+
+**Repo:** [github.com/Salama-Malek/astoria](https://github.com/Salama-Malek/astoria)
 
 ## Stack
 
 - **Vite** + **React 18** + **TypeScript**
-- **Tailwind CSS** (utility-first)
-- **Three.js** (vanilla, in `useEffect`) — no react-three-fiber dependency
-- **Lucide React** for icons
+- **Tailwind CSS** — dark `void` palette + CMYK tokens + glow shadows
+- **Three.js** via **@react-three/fiber** + **drei** + **postprocessing** (bloom)
+- **Framer Motion** for component animations
+- **GSAP + ScrollTrigger** synced with **Lenis** for cinematic smooth scrolling
+- **Zustand** for UI state (language, active device, mouse, loader)
 
 ## Setup
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 npm run dev      # http://localhost:5173
-npm run build    # production build → /dist
-npm run preview  # preview the production build
+npm run build    # → /dist
+npm run preview
 ```
 
-## Project structure
+## Architecture
 
-```
+```text
 src/
-├── App.tsx                    # composes all sections
-├── main.tsx                   # React entry
-├── index.css                  # Tailwind layers + custom CSS
-├── components/
-│   ├── Navbar.tsx
-│   ├── Hero.tsx               # text + 3D canvas + device tabs
-│   ├── Printer3D.tsx          # the Three.js morphing scene
-│   ├── Marquee.tsx
-│   ├── Services.tsx
-│   ├── Gallery.tsx
-│   ├── About.tsx
-│   ├── Reviews.tsx
-│   ├── Contact.tsx
-│   ├── Footer.tsx
-│   ├── Logo.tsx
-│   ├── LangToggle.tsx
-│   └── SectionEyebrow.tsx
+├── App.tsx                            # mounts chrome + composes chapters
+├── main.tsx
+├── index.css                          # Tailwind layers, grain, glass, scrollbars
+│
+├── state/useUIStore.ts                # Zustand: language, activeDevice, mouse
 ├── lib/
-│   ├── LanguageContext.tsx    # RU/EN provider + useLang hook
-│   └── content.ts             # ALL TEXT/DATA here — edit me first
-└── hooks/
-    └── useScrollReveal.ts     # IntersectionObserver reveal
+│   ├── i18n.ts                        # RU/EN dictionary + useT() + useLang()
+│   ├── lenis.ts                       # Lenis singleton + GSAP ticker sync
+│   ├── cmyk.ts                        # CMYK tokens + device→color map
+│   └── motion.ts                      # shared easings + variants
+│
+├── components/
+│   ├── chrome/
+│   │   ├── Loader.tsx                 # paper-sheet + CMYK registration
+│   │   ├── Navbar.tsx                 # transparent → blur on scroll
+│   │   ├── Footer.tsx
+│   │   ├── MouseGlow.tsx              # cycling CMYK cursor glow
+│   │   ├── ChapterLabel.tsx
+│   │   └── Wordmark.tsx               # gold-gradient italic + CMYK swooshes
+│   │
+│   ├── chapters/
+│   │   ├── Hero.tsx                   # Ch I — 3D + headline + switcher
+│   │   ├── About.tsx                  # Ch II — workshop story + hands photo
+│   │   ├── Services.tsx               # Ch III — 9 horizontal cards
+│   │   ├── CraftShowcase.tsx          # Ch IV — pinned paper-through-5-stages
+│   │   ├── Gallery.tsx                # Ch V — asymmetric grid + lightbox
+│   │   ├── Testimonials.tsx           # Ch VI — floating CMYK quote cards
+│   │   └── Contact.tsx                # Ch VII — info, Yandex map, final reveal
+│   │
+│   ├── three/
+│   │   ├── HeroDevice.tsx             # R3F canvas + lights + bloom
+│   │   ├── InkParticles.tsx           # CMYK additive points
+│   │   └── models/
+│   │       ├── PrinterModel.tsx
+│   │       ├── TShirtPressModel.tsx
+│   │       └── LaminatorModel.tsx
+│   │
+│   └── typography/
+│       ├── BiText.tsx                 # renders RU or EN per current lang
+│       └── RevealText.tsx             # masked line-by-line reveal
+│
+└── public/photos/                     # 23 real shop photos + MANIFEST.md
 ```
 
-## Editing content
+## Editing copy
 
-Most edits go in **`src/lib/content.ts`** — services, reviews, gallery labels, contact info, marquee strip. Everything is bilingual via `{ ru: '...', en: '...' }` objects.
+All RU/EN content lives in **`src/lib/i18n.ts`** as a single typed dictionary. Both languages have the same shape; the `useT()` hook returns the active language's slice.
 
-## Customizing
+## Photos
 
-### Replace gallery placeholders with real photos
+Real client photos are under `public/photos/`. Each photo has a descriptive slug; `public/photos/MANIFEST.md` documents what each one is and where it appears on the site.
 
-In `src/lib/content.ts`, add the `src` field to each gallery item:
+## Performance
 
-```ts
-{ num: '01', alt: { ru: 'Витрина', en: 'Storefront' }, accent: 'm', span: 'tall',
-  src: '/images/storefront.jpg'  // ← add this
-},
-```
+- Hero R3F canvas is `React.lazy` so initial paint never blocks on 3D
+- Manual chunk split (Vite `manualChunks`): three / r3f / motion / gsap-lenis isolated from app code
+- Lenis is the single source of scroll truth; GSAP `ScrollTrigger.update` is fed from Lenis
+- `prefers-reduced-motion` disables Lenis, mouse glow, particle drift
 
-Drop the image files into `public/images/` and they'll be served at `/images/...`. If `src` is missing, a CMYK-coloured placeholder tile shows instead.
+## Brand
 
-### Replace placeholder reviews
-
-Edit the `REVIEWS` array in `src/lib/content.ts`.
-
-### Hook up the real map
-
-In `src/lib/content.ts`, replace `yandexEmbedUrl` with the embed URL from your Yandex Maps page (Share → Embed code → copy the `src` URL).
-
-### Phone number
-
-Set `CONTACT.phone` in `src/lib/content.ts`. The contact section will pick it up automatically.
-
-### Theme colors
-
-In `tailwind.config.js`, the `cmyk` and `gold` colors are defined. Adjust there and they propagate everywhere.
-
-## The 3D hero
-
-The morphing animation lives in `src/components/Printer3D.tsx`. It uses vanilla Three.js inside a `useEffect` so it works the same in any React setup (including Base44).
-
-Three devices share the same part count so transforms can be lerped between them part-by-part. Click the pill tabs under the canvas to switch — the prop `deviceIndex` flows into the scene via a ref so the animation loop stays continuous.
-
-## Notes
-
-- Fonts are loaded from Google Fonts in `index.html` (Fraunces, Inter Tight, JetBrains Mono).
-- The Russian-only fallback locale is `ru` (default on load).
-- Mobile menu and lang toggle live in `Navbar.tsx`.
-- All sections use `useScrollReveal` for IntersectionObserver-based fade-up.
+- Email: `astoria_323@mail.ru`
+- Telegram: `@ASTORIA1000`
+- Yandex Maps: [open the listing](https://yandex.com/maps/-/CPcUiZNP)
+- Since 2010
