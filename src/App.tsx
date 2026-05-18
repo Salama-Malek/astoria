@@ -5,7 +5,7 @@ import Loader from '@/components/chrome/Loader';
 import Navbar from '@/components/chrome/Navbar';
 import Footer from '@/components/chrome/Footer';
 import MouseGlow from '@/components/chrome/MouseGlow';
-import Wordmark from '@/components/chrome/Wordmark';
+import Hero from '@/components/chapters/Hero';
 
 export default function App() {
   useLenis();
@@ -31,12 +31,7 @@ export default function App() {
       <div className="grain-overlay" aria-hidden="true" />
 
       <main>
-        <section id="hero" className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <p className="mono-label text-paper-mute mb-6">CHAPTERS PENDING</p>
-            <Wordmark size={56} />
-          </div>
-        </section>
+        <Hero />
 
         <section id="about" className="section-y container-x">
           <p className="mono-label text-paper-mute">CHAPTER II — placeholder</p>
