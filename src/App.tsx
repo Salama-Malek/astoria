@@ -6,6 +6,7 @@ import Navbar from '@/components/chrome/Navbar';
 import Footer from '@/components/chrome/Footer';
 import MouseGlow from '@/components/chrome/MouseGlow';
 import Hero from '@/components/chapters/Hero';
+import About from '@/components/chapters/About';
 
 export default function App() {
   useLenis();
@@ -33,9 +34,7 @@ export default function App() {
       <main>
         <Hero />
 
-        <section id="about" className="section-y container-x">
-          <p className="mono-label text-paper-mute">CHAPTER II — placeholder</p>
-        </section>
+        <About />
         <section id="services" className="section-y container-x">
           <p className="mono-label text-paper-mute">CHAPTER III — placeholder</p>
         </section>
