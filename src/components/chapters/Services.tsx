@@ -249,10 +249,10 @@ function ServiceCard({
             </span>
           </div>
           <div>
-            <h3 className="font-serif text-[clamp(1.3rem,2vw,1.7rem)] text-paper leading-tight">
+            <h3 className="font-serif font-light text-[clamp(1.2rem,1.9vw,1.6rem)] text-paper leading-[1.1] tracking-tight">
               {item.name}
             </h3>
-            <p className="mt-2 text-sm text-paper-dim font-light leading-snug">{item.desc}</p>
+            <p className="mt-2 text-[13px] text-paper-dim font-light leading-[1.5]">{item.desc}</p>
           </div>
         </div>
 
@@ -304,7 +304,7 @@ export default function Services() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-15%' }}
-            className="display text-paper mt-6 text-[clamp(2.4rem,6vw,5rem)]"
+            className="display text-paper mt-5 text-[clamp(2.2rem,5.4vw,4.6rem)]"
           >
             {t.services.heading}{' '}
             <span className="italic font-normal text-cmyk-c text-glow-c">
@@ -312,13 +312,13 @@ export default function Services() {
             </span>
           </motion.h2>
         </div>
-        <p className="text-paper-dim font-light max-w-[36ch] md:text-right">
+        <p className="text-paper-dim font-light max-w-[36ch] md:text-right text-[15px] leading-[1.55]">
           {t.services.sub}
         </p>
       </div>
 
       <div
-        className="mt-16 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-10 px-[max(16px,4vw)] [scrollbar-width:thin]"
+        className="mt-12 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-8 px-[max(20px,5vw)] [scrollbar-width:thin]"
         style={{ scrollPaddingLeft: '4vw' }}
       >
         {SERVICES.map((def, i) => (
@@ -327,10 +327,10 @@ export default function Services() {
         <div aria-hidden="true" className="shrink-0 w-[4vw]" />
       </div>
 
-      <div className="container-x mt-2 flex items-center gap-3">
-        <span className="mono-label text-paper-mute">SCROLL →</span>
+      <div className="container-x mt-4 flex items-center gap-4">
+        <span className="mono-label">SCROLL →</span>
         <div className="h-px flex-1 bg-paper-faint" />
-        <span className="font-mono text-[11px] tracking-wider2 text-paper-mute">09 SERVICES</span>
+        <span className="mono-label">09 SERVICES</span>
       </div>
     </section>
   );

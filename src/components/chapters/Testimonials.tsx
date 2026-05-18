@@ -60,7 +60,7 @@ export default function Testimonials() {
           />
           <h2
             id="reviews-heading"
-            className="display text-paper mt-6 text-[clamp(2.4rem,6vw,5rem)]"
+            className="display text-paper mt-5 text-[clamp(2.2rem,5.4vw,4.6rem)]"
           >
             {t.reviews.heading}{' '}
             <span className="italic font-normal text-cmyk-m text-glow-m">
@@ -68,11 +68,11 @@ export default function Testimonials() {
             </span>
           </h2>
         </div>
-        <p className="mono-label text-paper-mute">{t.reviews.source}</p>
+        <p className="mono-label">{t.reviews.source}</p>
       </div>
 
       <div
-        className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 perspective-[1200px]"
+        className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 perspective-[1200px]"
         style={{ perspective: '1200px' }}
       >
         {t.reviews.items.map((item, i) => {
@@ -97,7 +97,7 @@ export default function Testimonials() {
               }}
               className="group relative"
             >
-              <div className="relative h-full glass rounded-sm p-7 md:p-8 overflow-hidden">
+              <div className="relative h-full glass rounded-sm p-6 md:p-7 overflow-hidden">
                 {/* big opening quote mark */}
                 <span
                   aria-hidden="true"
@@ -112,11 +112,11 @@ export default function Testimonials() {
                 </span>
 
                 <div className="relative">
-                  <p className="font-serif text-paper text-[clamp(1.05rem,1.3vw,1.18rem)] leading-relaxed">
+                  <p className="font-serif font-light text-paper text-[clamp(1rem,1.2vw,1.13rem)] leading-[1.55]">
                     {item.quote}
                   </p>
 
-                  <div className="mt-7 flex items-center justify-between">
+                  <div className="mt-6 flex items-center justify-between">
                     <span className="font-mono uppercase text-[11px] tracking-wider2 text-paper-dim">
                       {item.author}
                     </span>
@@ -134,7 +134,7 @@ export default function Testimonials() {
         })}
       </div>
 
-      <div className="mt-16 flex justify-center">
+      <div className="mt-12 flex justify-center">
         <a
           href="https://yandex.com/maps/-/CPcUiZNP"
           target="_blank"

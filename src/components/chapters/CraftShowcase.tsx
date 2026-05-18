@@ -56,7 +56,7 @@ export default function CraftShowcase() {
               />
               <h2
                 id="craft-heading"
-                className="display text-paper mt-8 text-[clamp(2.2rem,5vw,4.5rem)]"
+                className="display text-paper mt-6 text-[clamp(2rem,4.6vw,4.2rem)]"
               >
                 {t.craft.heading}{' '}
                 <span className="italic font-normal text-cmyk-y text-glow-y">
@@ -64,7 +64,7 @@ export default function CraftShowcase() {
                 </span>
               </h2>
 
-              <div className="relative mt-12 h-[180px]">
+              <div className="relative mt-10 h-[170px]">
                 {t.craft.stages.map((s, i) => (
                   <motion.div
                     key={i}
@@ -82,7 +82,7 @@ export default function CraftShowcase() {
                     >
                       {String(i + 1).padStart(2, '0')} / 05 · {s.name.toUpperCase()}
                     </p>
-                    <p className="mt-5 font-serif text-[clamp(1.4rem,2.2vw,2rem)] text-paper leading-snug">
+                    <p className="mt-4 font-serif font-light text-[clamp(1.3rem,2vw,1.9rem)] text-paper leading-[1.25] tracking-tight">
                       {s.body}
                     </p>
                   </motion.div>

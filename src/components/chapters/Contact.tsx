@@ -49,12 +49,12 @@ function InfoCard({
 }) {
   const hex = accent === 'c' ? CMYK.cyan : accent === 'm' ? CMYK.magenta : CMYK.yellow;
   const inner = (
-    <div className="relative glass rounded-sm p-6 md:p-7 h-full overflow-hidden transition-transform duration-700 ease-expo group-hover:-translate-y-1">
+    <div className="relative glass rounded-sm p-5 md:p-6 h-full overflow-hidden transition-transform duration-700 ease-expo group-hover:-translate-y-1">
       <div className="flex items-center gap-3" style={{ color: hex }}>
         <span style={{ filter: `drop-shadow(0 0 8px ${hex})` }}>{icon}</span>
-        <span className="font-mono uppercase text-[10.5px] tracking-wider2">{label}</span>
+        <span className="font-mono uppercase text-[10.5px] tracking-[0.22em]">{label}</span>
       </div>
-      <p className="mt-5 text-paper font-serif text-[clamp(1.05rem,1.4vw,1.25rem)] leading-snug">
+      <p className="mt-4 text-paper font-serif font-light text-[clamp(1rem,1.3vw,1.2rem)] leading-[1.3]">
         {value}
       </p>
       <div
@@ -108,7 +108,7 @@ export default function Contact() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-15%' }}
-          className="display text-paper mt-10 text-center text-[clamp(3.5rem,11vw,11rem)]"
+          className="display text-paper mt-8 text-center text-[clamp(3rem,9.5vw,9.5rem)] leading-[0.95]"
         >
           {t.contact.heading.slice(0, -1)}
           <span className="italic font-normal text-cmyk-y text-glow-y">
@@ -117,13 +117,13 @@ export default function Contact() {
         </motion.h2>
 
         {/* Info cards + map */}
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-8">
           <motion.div
             variants={stagger(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-10%' }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 content-start"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 content-start"
           >
             <InfoCard
               label={t.contact.address.label}
@@ -202,7 +202,7 @@ export default function Contact() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <motion.a
             href={YANDEX_URL}
             target="_blank"
@@ -212,7 +212,7 @@ export default function Contact() {
             viewport={{ once: true, margin: '-10%' }}
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.7, ease: EASE_EXPO }}
-            className="group inline-flex items-center gap-3 bg-cmyk-y text-void font-mono uppercase text-[12px] tracking-wider2 px-8 py-4 rounded-full hover:shadow-glow-y transition-shadow"
+            className="group inline-flex items-center gap-3 bg-cmyk-y text-void font-mono font-medium uppercase text-[12px] tracking-[0.22em] px-7 py-3.5 rounded-full hover:shadow-glow-y transition-shadow"
           >
             <span className="block h-1.5 w-1.5 rounded-full bg-void" />
             {t.contact.cta}
@@ -224,7 +224,7 @@ export default function Contact() {
       </div>
 
       {/* Final reveal — fade to black with logo emerging */}
-      <div className="relative mt-32 mb-12 min-h-[60vh] flex flex-col items-center justify-center">
+      <div className="relative mt-24 mb-8 min-h-[50vh] flex flex-col items-center justify-center">
         <motion.div
           style={{ opacity: logoOpacity, scale: logoScale }}
           className="flex flex-col items-center"

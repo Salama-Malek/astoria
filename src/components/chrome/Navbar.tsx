@@ -37,7 +37,7 @@ export default function Navbar() {
         scrolled ? 'bg-void/70 backdrop-blur-xl border-b border-paper-faint' : 'bg-transparent'
       }`}
     >
-      <div className="container-x flex items-center justify-between h-[64px]">
+      <div className="container-x flex items-center justify-between h-[68px]">
         <button
           onClick={() => scrollToSection('hero')}
           className="group"
@@ -46,7 +46,7 @@ export default function Navbar() {
           <Wordmark size={22} />
         </button>
 
-        <nav className="hidden md:flex items-center gap-7" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
           {links.map(([id, key]) => (
             <button
               key={id}

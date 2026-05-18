@@ -32,7 +32,7 @@ export default function About() {
         }}
       />
 
-      <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-start">
+      <div className="grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-16 items-start">
         {/* Left: portrait image with parallax */}
         <div className="relative aspect-[3/4] lg:aspect-[2/3] overflow-hidden lg:sticky lg:top-28">
           <motion.div
@@ -95,14 +95,14 @@ export default function About() {
           <motion.h2
             id="about-heading"
             variants={fadeUp}
-            className="display text-paper mt-8 text-[clamp(2.4rem,6vw,5.5rem)]"
+            className="display text-paper mt-6 text-[clamp(2.2rem,5.4vw,5rem)]"
           >
             {t.about.heading}
             <br />
             <span className="italic font-normal text-paper-dim">{t.about.headingItalic}</span>
           </motion.h2>
 
-          <div className="mt-10 space-y-6 text-[clamp(1rem,1.2vw,1.18rem)] text-paper-dim leading-[1.7] max-w-[58ch] font-light">
+          <div className="mt-8 space-y-5 text-[clamp(0.98rem,1.1vw,1.13rem)] text-paper-dim leading-[1.65] max-w-[60ch] font-light">
             <motion.p variants={fadeUp}>{t.about.p1}</motion.p>
             <motion.p variants={fadeUp}>{t.about.p2}</motion.p>
             <motion.p variants={fadeUp}>{t.about.p3}</motion.p>
@@ -111,7 +111,7 @@ export default function About() {
           {/* Stat line */}
           <motion.div
             variants={fadeUp}
-            className="mt-16 border-t border-paper-faint pt-8 flex flex-wrap items-baseline gap-x-8 gap-y-3"
+            className="mt-12 border-t border-paper-faint pt-6 flex flex-wrap items-baseline gap-x-7 gap-y-3"
           >
             {t.about.stat.split('·').map((chunk, i) => (
               <motion.span

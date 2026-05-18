@@ -146,7 +146,7 @@ export default function Gallery() {
           />
           <h2
             id="gallery-heading"
-            className="display text-paper mt-6 text-[clamp(2.4rem,6vw,5rem)]"
+            className="display text-paper mt-5 text-[clamp(2.2rem,5.4vw,4.6rem)]"
           >
             {t.gallery.heading}{' '}
             <span className="italic font-normal text-cmyk-y text-glow-y">
@@ -154,10 +154,10 @@ export default function Gallery() {
             </span>
           </h2>
         </div>
-        <p className="text-paper-dim font-light max-w-[40ch] md:text-right">{t.gallery.sub}</p>
+        <p className="text-paper-dim font-light max-w-[40ch] md:text-right text-[15px] leading-[1.55]">{t.gallery.sub}</p>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-12 auto-rows-[200px] md:auto-rows-[260px] gap-4 md:gap-5">
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-12 auto-rows-[180px] md:auto-rows-[240px] gap-3 md:gap-4">
         {TILES.map((tile, i) => (
           <motion.button
             key={tile.src}
