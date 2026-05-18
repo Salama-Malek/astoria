@@ -9,6 +9,7 @@ import Hero from '@/components/chapters/Hero';
 import About from '@/components/chapters/About';
 import Services from '@/components/chapters/Services';
 import CraftShowcase from '@/components/chapters/CraftShowcase';
+import Gallery from '@/components/chapters/Gallery';
 
 export default function App() {
   useLenis();
@@ -39,9 +40,7 @@ export default function App() {
         <About />
         <Services />
         <CraftShowcase />
-        <section id="gallery" className="section-y container-x">
-          <p className="mono-label text-paper-mute">CHAPTER V — placeholder</p>
-        </section>
+        <Gallery />
         <section id="reviews" className="section-y container-x">
           <p className="mono-label text-paper-mute">CHAPTER VI — placeholder</p>
         </section>
